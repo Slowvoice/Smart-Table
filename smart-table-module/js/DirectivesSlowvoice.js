@@ -27,8 +27,6 @@
 			if (scope.value.ui_units_type == 'dollars') {
 			    input[0].type='text';
 			}
-			// hack:
-			//scope.value = scope.column.formatFunction(scope.value_object,'scale_only');
                     }, true);
 
                     scope.submit = function () {
@@ -38,10 +36,7 @@
 			    // are seen.
 			    var new_value = angular.copy(scope.value);
 			    new_value.scaled_estimate = scope.edit_value;
-			    //new_value.estimate = scope.column.formatFunction(new_value,'reverse_scale');
-			    //new_value.reverse_scale = true;
 			    new_value.estimate = filter('ui_units')(new_value,false,true,false);
-			    //new_value.reverse_scale = false;
                             ctrl.updateDataRow(scope.row, scope.column.map, new_value);
                             ctrl.sortBy();//it will trigger the refresh...  (ie it will sort, filter, etc with the new value)
                         }
