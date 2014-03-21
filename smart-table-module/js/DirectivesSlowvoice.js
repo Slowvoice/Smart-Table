@@ -39,9 +39,9 @@
 			    var new_value = angular.copy(scope.value);
 			    new_value.scaled_estimate = scope.edit_value;
 			    //new_value.estimate = scope.column.formatFunction(new_value,'reverse_scale');
-			    new_value.reverse_scale = true;
-			    new_value.estimate = filter('ui_units')(new_value.estimate,new_value);
-			    new_value.reverse_scale = false;
+			    //new_value.reverse_scale = true;
+			    new_value.estimate = filter('ui_units')(new_value,false,true,false);
+			    //new_value.reverse_scale = false;
                             ctrl.updateDataRow(scope.row, scope.column.map, new_value);
                             ctrl.sortBy();//it will trigger the refresh...  (ie it will sort, filter, etc with the new value)
                         }
