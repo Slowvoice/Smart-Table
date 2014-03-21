@@ -8,7 +8,8 @@
             selectionCheckbox: 'partials/selectionCheckbox.html',
             selectAllCheckbox: 'partials/selectAllCheckbox.html',
             defaultHeader: 'partials/defaultHeader.html',
-            pagination: 'partials/pagination.html'
+            pagination: 'partials/pagination.html',
+	    editableEstimate: 'partials/editableEstimate.html'
         });
 })(angular);
 

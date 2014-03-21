@@ -154,7 +154,7 @@
                 link: function (scope, element) {
                     var
                         column = scope.column,
-                        isSimpleCell = !column.isEditable,
+                        isSimpleCell = !column.isEditable && !column.isEditableEstimate,
                         row = scope.dataRow,
                         format = filter('format'),
                         getter = parse(column.map),
@@ -171,6 +171,9 @@
                     function defaultContent() {
                         if (column.isEditable) {
                             element.html('<div editable-cell="" row="dataRow" column="column" type="column.type"></div>');
+                            compile(element.contents())(scope);
+			} else if (column.isEditableEstimate) {
+                            element.html('<div editable-estimate="" row="dataRow" column="column" type="column.type"></div>');
                             compile(element.contents())(scope);
                         } else {
                             element.html(scope.formatedValue);
