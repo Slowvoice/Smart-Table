@@ -56,7 +56,7 @@
 			    scope.validationErr = "A value is is required.";
 			}
                         if (scope.myForm.myInput.$valid === true) {
-			    console.log("Input value considered valid");
+			    //console.log("Input value considered valid");
 			    // Since value is an object, we must clone it so that differences between old and new value
 			    // are seen.
 			    var new_value = angular.copy(scope.value);
@@ -66,7 +66,7 @@
                             ctrl.sortBy();//it will trigger the refresh...  (ie it will sort, filter, etc with the new value)
                         }
 			else {
-			    console.log("scope.myform.myInput.$valid is false");
+			    //console.log("scope.myform.myInput.$valid is false");
 			}
                         scope.toggleEditMode();
                     };
