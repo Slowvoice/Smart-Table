@@ -25,8 +25,10 @@
                         scope.value = getter(scope.row);
 			// Example of how to change type of input field based on UI units.
 			if (scope.value.ui_units_type == 'dollars') {
-			    input[0].type='text';
+			    //input[0].type='text';
 			}
+			input[0].min = scope.value.ui_units_min_val;
+			input[0].max = scope.value.ui_units_max_val;
                     }, true);
 
                     scope.submit = function () {
