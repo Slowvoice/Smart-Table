@@ -75,7 +75,7 @@
                         scope.value = getter(scope.row);
 			// For some reason, edit of value.scaled_estimate in template doesn't work,
 			// so assign to a different scope variable.
-			scope.edit_value = scope.value.scaled_estimate;
+			scope.edit_value = Math.round(scope.value.scaled_estimate*100)/100;
                         scope.isEditMode = scope.isEditMode !== true;
 			if (scope.isEditMode == true) {
 			    scope.validationErr = '';
