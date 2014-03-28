@@ -63,7 +63,7 @@
                         if (oldValue !== newValue) {
                             ctrl.sortBy();//it will trigger the refresh... some hack ?
                         }
-                    });
+                    }, true);
                 }
             };
         }])
