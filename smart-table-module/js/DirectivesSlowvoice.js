@@ -85,6 +85,7 @@
 			    scope.myForm.myInput.$error.min = false;
 			    scope.myForm.myInput.$error.max = false;
 			    scope.myForm.myInput.$error.required = false;
+                            ctrl.editingDataRow(scope.row);
 			}
                     };
 

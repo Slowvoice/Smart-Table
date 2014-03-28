@@ -264,6 +264,18 @@
                     }
                 }
             };
+
+            /**
+             * Generates event when a cell enters edit mode. Currently used only by editableEstimate
+             * @param dataRow The dataRow whose cell is being edited.
+             */
+            this.editingDataRow = function (dataRow) {
+                var index = scope.displayedCollection.indexOf(dataRow);
+                if (index !== -1) {
+                    scope.$emit('editingDataRow', {item: scope.displayedCollection[index]});
+                }
+            };
+
         }]);
 })(angular);
 
