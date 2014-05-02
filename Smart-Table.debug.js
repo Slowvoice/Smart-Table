@@ -116,7 +116,7 @@
                         if (oldValue !== newValue) {
                             ctrl.sortBy();//it will trigger the refresh... some hack ?
                         }
-                    });
+                    }, true);
                 }
             };
         }])
@@ -399,7 +399,7 @@
                         scope.value = getter(scope.row);
 			// For some reason, edit of value.scaled_estimate in template doesn't work,
 			// so assign to a different scope variable.
-			scope.edit_value = scope.value.scaled_estimate;
+			scope.edit_value = Math.round(scope.value.scaled_estimate*100)/100;
                         scope.isEditMode = scope.isEditMode !== true;
 			if (scope.isEditMode == true) {
 			    scope.validationErr = '';
@@ -409,6 +409,7 @@
 			    scope.myForm.myInput.$error.min = false;
 			    scope.myForm.myInput.$error.max = false;
 			    scope.myForm.myInput.$error.required = false;
+                            ctrl.editingDataRow(scope.row);
 			}
                     };
 
@@ -718,6 +719,18 @@
                     }
                 }
             };
+
+            /**
+             * Generates event when a cell enters edit mode. Currently used only by editableEstimate
+             * @param dataRow The dataRow whose cell is being edited.
+             */
+            this.editingDataRow = function (dataRow) {
+                var index = scope.displayedCollection.indexOf(dataRow);
+                if (index !== -1) {
+                    scope.$emit('editingDataRow', {item: scope.displayedCollection[index]});
+                }
+            };
+
         }]);
 })(angular);
 
@@ -768,11 +781,12 @@ angular.module("partials/globalSearchCell.html", []).run(["$templateCache", func
 angular.module("partials/pagination.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("partials/pagination.html",
     "<div class=\"pagination\">\n" +
-    "    <ul>\n" +
+    "    <ul class=\"pagination\">\n" +
     "        <li ng-repeat=\"page in pages\" ng-class=\"{active: page.active, disabled: page.disabled}\"><a\n" +
     "                ng-click=\"selectPage(page.number)\">{{page.text}}</a></li>\n" +
     "    </ul>\n" +
-    "</div> ");
+    "</div> \n" +
+    "");
 }]);
 
 angular.module("partials/selectAllCheckbox.html", []).run(["$templateCache", function($templateCache) {
